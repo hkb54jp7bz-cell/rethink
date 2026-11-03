@@ -1,3 +1,4 @@
+import AIR_910604_WW from './devices/AIR_910604_WW'
 import POT_056905_WW from './devices/POT_056905_WW'
 import WTDN3 from './devices/WTDN3'
 import H11 from './devices/H11'
@@ -67,6 +68,7 @@ const t1deviceTypes: Record<string, T1Factory> = {
 }
 
 const t2deviceTypes: Record<string, T2Factory> = {
+    AIR_910604_WW, // AS651DWH0: passive receive-only support
     POT_056905_WW,
     RAC_056905_WW,
     WIN_056905_WW,
