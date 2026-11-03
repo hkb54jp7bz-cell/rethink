@@ -100,3 +100,37 @@ Check envelope, CRC, tag encoding, mode-dependent attached TLVs and rejection
 behavior separately. Inbound A7 state notifications do not establish outbound
 write framing or rules. Do not copy the dehumidifier/air-conditioner write logic.
 No physical capture or test is initiated by this implementation.
+
+## Interactive experimental terminal probe
+
+`tools/puricare-terminal-test.mjs` is a separate opt-in diagnostic tool for the
+owner-authorized physical experiments. It does not enable native MQTT commands.
+Run it in the Rethink container using its installed `/app` dependencies:
+
+```sh
+node /tmp/puricare-testes.mjs --execute
+```
+
+Without `--execute` it only prints the menu. With it, the tool first verifies the
+fixed purifier UUID/model through the management interface. It sends no appliance
+packet until the user enters a whitelisted menu command. Each candidate uses
+read values from the captures and the shared TLV encoder; its suitability as a
+write is still a hypothesis. Commands are serialized behind physical result
+reporting (`ok` or `nao`), not automatically retried. Ambient tags have no write
+commands. No polling, certificate changes, or container restart is performed.
+
+Each run records raw outbound/inbound packets, CRC-checked state observations,
+trial IDs, and the user's physical observations in a private `/tmp` JSONL file.
+An echoed value is recorded separately from a physical change; it does not on
+its own validate a write. `sair` ends the session and prints the capture path.
+Settings are not automatically restored. Test different values from the current
+state and cancel timer experiments with `timer 0`, checking the physical panel.
+
+The published read-only image was used to test this tool with networking disabled
+and a mock management server: all 24 whitelisted candidate values, invalid input
+rejection, one pending write at a time, raw capture/result correlation, wrong
+model/offline rejection, and the default dry run. These are software checks, not
+physical appliance validation. The reproducible container harness is
+`tests/tools/puricare-terminal-test.docker.mjs`; mount the probe at
+`/app/puricare-terminal-test.mjs` and the harness at `/app/puricare-menu-harness.mjs`
+inside the published image, and run the latter with `--network none`.
