@@ -8,8 +8,9 @@ import { createInterface } from 'node:readline'
 const deviceId = '18e271fb-81d6-45dd-818c-3034db55eb63'
 const definitions = {
     energia: [0x1f7, { on: 1, off: 0 }],
-    modo: [0x1f9, { normal: 16, smart: 13, booster: 14 }],
-    fan: [0x1fa, [2, 4, 6, 7, 8]],
+    // Write labels follow the owner's physical test; read codes must be checked separately.
+    modo: [0x1f9, { normal: 14, smart: 16, booster: 13 }],
+    fan: [0x1fa, { 2: 2, 4: 4, 6: 6, 7: 7, 8: 8, auto: 8 }],
     booster: [0x326, [2, 4, 6, 7, 8]],
     oscilacao: [0x327, [0, 1]],
     luz: [0x24e, { on: 1, off: 0 }],
@@ -18,7 +19,7 @@ const definitions = {
 const help = `TESTES EXPERIMENTAIS — somente PuriCare ${deviceId}
 energia ON|OFF
 modo Normal|Smart|Booster
-fan 2|4|6|7|8
+fan 2|4|6|7|Auto (8 tambem e aceito)
 booster 2|4|6|7|8
 oscilacao 0|1
 luz ON|OFF
@@ -50,7 +51,7 @@ function record(event) {
     appendFileSync(path, JSON.stringify(entry) + '\n')
     console.log(JSON.stringify(entry))
 }
-record({ k: 'session', v: 1, tool: 'puricare-terminal-test/1', deviceId, experimental: true })
+record({ k: 'session', v: 1, tool: 'puricare-terminal-test/2', deviceId, experimental: true })
 const ws = new WebSocket(`ws://127.0.0.1:44401/device?id=${deviceId}`, { handshakeTimeout: 5000 })
 const rl = createInterface({ input: process.stdin, output: process.stdout, prompt: 'puricare> ' })
 const latest = new Map()

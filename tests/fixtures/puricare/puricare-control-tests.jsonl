@@ -1,0 +1,245 @@
+{"ts":1793670060789,"k":"session","v":1,"tool":"puricare-terminal-test/1","deviceId":"18e271fb-81d6-45dd-818c-3034db55eb63","experimental":true}
+{"ts":1793670060817,"k":"marker","phase":"online","meta":{"modelId":"AIR_910604_WW","modelName":"AIR_910604_WW","swVersion":"371","deviceType":"402"}}
+{"ts":1793670063073,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204ed02cd49e5a3"}
+{"ts":1793670069119,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204ee02cd4a4e1c"}
+{"ts":1793670072248,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204ef02cd4818ea"}
+{"ts":1793670075080,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f002cd4af7e1"}
+{"ts":1793670077909,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f102cd49b136"}
+{"ts":1793670083959,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f202cd4a1a89"}
+{"ts":1793670096043,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f302cd4b7c1c"}
+{"ts":1793670107718,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f402cd481d52"}
+{"ts":1793670113764,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f502cd497bc7"}
+{"ts":1793670125854,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f602cd4ad078"}
+{"ts":1793670137817,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f702cd4bb6ed"}
+{"ts":1793670143865,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f802cd485260"}
+{"ts":1793670155541,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204f902cd4934f5"}
+{"ts":1793670167630,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204fa02cd4a9f4a"}
+{"ts":1793670170775,"k":"trial","trialId":1,"command":"energia OFF","tag":503,"value":0,"previousValue":null,"packet":"01010400000065020101027DC00576","txObserved":false,"matchingResponse":false}
+{"ts":1793670170793,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027dc00576","trialId":1}
+{"ts":1793670173678,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204fb02cd4bf9df","trialId":1}
+{"ts":1793670177999,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":1}
+{"ts":1793670178315,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204fc0e7dc09380cd40cd00ccc090409000c443","trialId":1}
+{"ts":1793670199661,"k":"result","trialId":1,"command":"energia OFF","tag":503,"value":0,"previousValue":null,"packet":"01010400000065020101027DC00576","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670205886,"k":"trial","trialId":2,"command":"energia ON","tag":503,"value":1,"previousValue":0,"packet":"01010400000065020101027DC11557","txObserved":false,"matchingResponse":false}
+{"ts":1793670205889,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027dc11557","trialId":2}
+{"ts":1793670206111,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":2}
+{"ts":1793670206405,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204fd047dc1938112f4","trialId":2}
+{"ts":1793670212400,"k":"result","trialId":2,"command":"energia ON","tag":503,"value":1,"previousValue":0,"packet":"01010400000065020101027DC11557","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670236060,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204fe08cd4acd08ccc890019798"}
+{"ts":1793670244923,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204ff02cd49136c"}
+{"ts":1793670250953,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040002cd4848ee"}
+{"ts":1793670256878,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040102cd4a1e18"}
+{"ts":1793670262921,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040202cd4b95e5"}
+{"ts":1793670275004,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040302cd48d332"}
+{"ts":1793670280641,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040402cd49923e"}
+{"ts":1793670292717,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040502cd4ad4e9"}
+{"ts":1793670304778,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040602cd4b5f14"}
+{"ts":1793670310822,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040702cd4819c3"}
+{"ts":1793670322366,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040802cd49dd0c"}
+{"ts":1793670326412,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204090490429002ae37"}
+{"ts":1793670334444,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040a02cd4a0007"}
+{"ts":1793670338500,"k":"trial","trialId":3,"command":"modo smart","tag":505,"value":13,"previousValue":null,"packet":"01010400000065020101027E4D1000","txObserved":false,"matchingResponse":false}
+{"ts":1793670338501,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e4d1000","trialId":3}
+{"ts":1793670338729,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":3}
+{"ts":1793670340632,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040b02cd4b6692","trialId":3}
+{"ts":1793670343462,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040c02cd4807dc","trialId":3}
+{"ts":1793670346290,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040d02cd4b410b","trialId":3}
+{"ts":1793670349525,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040e02cd4acaf6","trialId":3}
+{"ts":1793670361181,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702040f02cd4bac63","trialId":3}
+{"ts":1793670367234,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041002cd494368","trialId":3}
+{"ts":1793670370460,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041102cd4a05bf","trialId":3}
+{"ts":1793670373947,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041202cd49ae00","trialId":3}
+{"ts":1793670376782,"k":"result","trialId":3,"command":"modo smart","tag":505,"value":13,"previousValue":null,"packet":"01010400000065020101027E4D1000","txObserved":true,"matchingResponse":false,"physicalChange":false,"note":"nao"}
+{"ts":1793670379205,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041302cd48c895"}
+{"ts":1793670383535,"k":"trial","trialId":4,"command":"modo Smart","tag":505,"value":13,"previousValue":null,"packet":"01010400000065020101027E4D1000","txObserved":false,"matchingResponse":false}
+{"ts":1793670383537,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e4d1000","trialId":4}
+{"ts":1793670383758,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":4}
+{"ts":1793670385257,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041402cd498999","trialId":4}
+{"ts":1793670391298,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041502cd4acf4e","trialId":4}
+{"ts":1793670397337,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041602cd4b44b3","trialId":4}
+{"ts":1793670402707,"k":"result","trialId":4,"command":"modo Smart","tag":505,"value":13,"previousValue":null,"packet":"01010400000065020101027E4D1000","txObserved":true,"matchingResponse":false,"physicalChange":true,"note":"ok"}
+{"ts":1793670409024,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041702cd480264"}
+{"ts":1793670415075,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041802cd4af6c8"}
+{"ts":1793670417908,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041902cd4ce0ba"}
+{"ts":1793670421132,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041a02cd4e5b24"}
+{"ts":1793670423966,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041b05cd5010cd091f82"}
+{"ts":1793670427198,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041c05cd5011cd0a0195"}
+{"ts":1793670429155,"k":"trial","trialId":5,"command":"modo Normal","tag":505,"value":16,"previousValue":null,"packet":"01010400000065020101037E5010039B","txObserved":false,"matchingResponse":false}
+{"ts":1793670429161,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101037e5010039b","trialId":5}
+{"ts":1793670429386,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":5}
+{"ts":1793670429685,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041d037e50104b1c","trialId":5}
+{"ts":1793670430098,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041e05cd5012cd0b2807","trialId":5}
+{"ts":1793670432935,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702041f02cd0c8fe7","trialId":5}
+{"ts":1793670438849,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042004cd0dccc98d09","trialId":5}
+{"ts":1793670444881,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042102ccca8bef","trialId":5}
+{"ts":1793670447714,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042205cd5011cd0e2a14","trialId":5}
+{"ts":1793670450944,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042307cd5010cd0dccc93740","trialId":5}
+{"ts":1793670453777,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042404cd4ecd0c758d","trialId":5}
+{"ts":1793670457033,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042506cd4dcd0bccc8f086","trialId":5}
+{"ts":1793670459850,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042604cd4ccd0af06b","trialId":5}
+{"ts":1793670462680,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042704cd4bcd090038","trialId":5}
+{"ts":1793670464945,"k":"result","trialId":5,"command":"modo Normal","tag":505,"value":16,"previousValue":null,"packet":"01010400000065020101037E5010039B","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670465915,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042804cd4acd08e22a"}
+{"ts":1793670471974,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042902cd499cf6"}
+{"ts":1793670480834,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042a02cd48170b"}
+{"ts":1793670491402,"k":"trial","trialId":6,"command":"modo Booster","tag":505,"value":14,"previousValue":16,"packet":"01010400000065020101027E4E2063","txObserved":false,"matchingResponse":false}
+{"ts":1793670491405,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e4e2063","trialId":6}
+{"ts":1793670491636,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":6}
+{"ts":1793670491927,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042b027e4e4a27","trialId":6}
+{"ts":1793670498664,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042c02cd4920b3","trialId":6}
+{"ts":1793670498749,"k":"result","trialId":6,"command":"modo Booster","tag":505,"value":14,"previousValue":16,"packet":"01010400000065020101027E4E2063","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670504704,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042d02cd4a6664"}
+{"ts":1793670516373,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042e02cd4bed99"}
+{"ts":1793670528456,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702042f02cd48ab4e"}
+{"ts":1793670534499,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043002cd497426"}
+{"ts":1793670540327,"k":"trial","trialId":7,"command":"modo Smart","tag":505,"value":13,"previousValue":14,"packet":"01010400000065020101027E4D1000","txObserved":false,"matchingResponse":false}
+{"ts":1793670540329,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e4d1000","trialId":7}
+{"ts":1793670540551,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":7}
+{"ts":1793670540851,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a7020431027e4d0948","trialId":7}
+{"ts":1793670546488,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043202cd4aa92d","trialId":7}
+{"ts":1793670553428,"k":"result","trialId":7,"command":"modo Smart","tag":505,"value":13,"previousValue":14,"packet":"01010400000065020101027E4D1000","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670558432,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043302cd4bcfb8"}
+{"ts":1793670558835,"k":"trial","trialId":8,"command":"fan 2","tag":506,"value":2,"previousValue":null,"packet":"01010400000065020101027E8238A3","txObserved":false,"matchingResponse":false}
+{"ts":1793670558837,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e8238a3","trialId":8}
+{"ts":1793670559071,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":8}
+{"ts":1793670559369,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204340e7e82b5cdb600b642b5ceb60eb64e7776","trialId":8}
+{"ts":1793670561358,"k":"result","trialId":8,"command":"fan 2","tag":506,"value":2,"previousValue":null,"packet":"01010400000065020101027E8238A3","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670564191,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043502cd48d842"}
+{"ts":1793670567608,"k":"trial","trialId":9,"command":"fan 4","tag":506,"value":4,"previousValue":2,"packet":"01010400000065020101027E845865","txObserved":false,"matchingResponse":false}
+{"ts":1793670567613,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e845865","trialId":9}
+{"ts":1793670567877,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":9}
+{"ts":1793670568190,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204360e7e84b5cdb600b644b5ceb60eb64e1951","trialId":9}
+{"ts":1793670573003,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204370490419001682b","trialId":9}
+{"ts":1793670575487,"k":"result","trialId":9,"command":"fan 4","tag":506,"value":4,"previousValue":2,"packet":"01010400000065020101027E845865","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670576226,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043802cd49f1e5"}
+{"ts":1793670580674,"k":"trial","trialId":10,"command":"fan 6","tag":506,"value":6,"previousValue":4,"packet":"01010400000065020101027E867827","txObserved":false,"matchingResponse":false}
+{"ts":1793670580675,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e867827","trialId":10}
+{"ts":1793670580902,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":10}
+{"ts":1793670581212,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204390e7e86b5cdb600b646b5ceb60eb64e8a6e","trialId":10}
+{"ts":1793670582031,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043a02cd4a2cee","trialId":10}
+{"ts":1793670588242,"k":"result","trialId":10,"command":"fan 6","tag":506,"value":6,"previousValue":4,"packet":"01010400000065020101027E867827","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670590359,"k":"trial","trialId":11,"command":"fan 7","tag":506,"value":7,"previousValue":6,"packet":"01010400000065020101027E876806","txObserved":false,"matchingResponse":false}
+{"ts":1793670590364,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e876806","trialId":11}
+{"ts":1793670590585,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":11}
+{"ts":1793670590907,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043b0e7e87b5cdb600b647b5ceb60eb64e3705","trialId":11}
+{"ts":1793670592467,"k":"result","trialId":11,"command":"fan 7","tag":506,"value":7,"previousValue":6,"packet":"01010400000065020101027E876806","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670594129,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043c02cd4b1b56"}
+{"ts":1793670595372,"k":"trial","trialId":12,"command":"fan 8","tag":506,"value":8,"previousValue":7,"packet":"01010400000065020101027E8899E9","txObserved":false,"matchingResponse":false}
+{"ts":1793670595374,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027e8899e9","trialId":12}
+{"ts":1793670595597,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":12}
+{"ts":1793670595910,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043d0e7e88b5cdb600b648b5ceb60eb64ebc05","trialId":12}
+{"ts":1793670605972,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043e02cd48c65d","trialId":12}
+{"ts":1793670608122,"k":"result","trialId":12,"command":"fan 8","tag":506,"value":8,"previousValue":7,"packet":"01010400000065020101027E8899E9","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670612023,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702043f02cd49a0c8"}
+{"ts":1793670623990,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044002cd4a0630"}
+{"ts":1793670635670,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044102cd4b60a5"}
+{"ts":1793670641715,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044202cd48cb1a"}
+{"ts":1793670650581,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044302cd49ad8f"}
+{"ts":1793670653816,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044402cd4cac07"}
+{"ts":1793670656643,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044502cd4dca92"}
+{"ts":1793670662704,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044602cd4c416f"}
+{"ts":1793670665530,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044702cd4b473c"}
+{"ts":1793670671583,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044802cd4a83f3"}
+{"ts":1793670674838,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044902cd49c524"}
+{"ts":1793670680748,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044a02cd484ed9"}
+{"ts":1793670683573,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044b02cd49284c"}
+{"ts":1793670689622,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044c02cd4a4902"}
+{"ts":1793670700214,"k":"trial","trialId":13,"command":"booster 2","tag":806,"value":2,"previousValue":null,"packet":"0101040000006502010102C982BF39","txObserved":false,"matchingResponse":false}
+{"ts":1793670700218,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"0101040000006502010102c982bf39","trialId":13}
+{"ts":1793670700448,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":13}
+{"ts":1793670700742,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044d02c982ab36","trialId":13}
+{"ts":1793670704371,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044e02cd4bb44b","trialId":13}
+{"ts":1793670705170,"k":"result","trialId":13,"command":"booster 2","tag":806,"value":2,"previousValue":null,"packet":"0101040000006502010102C982BF39","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670712522,"k":"trial","trialId":14,"command":"booster 4","tag":806,"value":4,"previousValue":2,"packet":"0101040000006502010102C984DFFF","txObserved":false,"matchingResponse":false}
+{"ts":1793670712524,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"0101040000006502010102c984dfff","trialId":14}
+{"ts":1793670712747,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":14}
+{"ts":1793670713044,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702044f02c9842698","trialId":14}
+{"ts":1793670718093,"k":"result","trialId":14,"command":"booster 4","tag":806,"value":4,"previousValue":2,"packet":"0101040000006502010102C984DFFF","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670719488,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045002cd4a1d97"}
+{"ts":1793670724050,"k":"trial","trialId":15,"command":"booster 6","tag":806,"value":6,"previousValue":4,"packet":"0101040000006502010102C986FFBD","txObserved":false,"matchingResponse":false}
+{"ts":1793670724053,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"0101040000006502010102c986ffbd","trialId":15}
+{"ts":1793670724289,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":15}
+{"ts":1793670724578,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045102c986bf27","trialId":15}
+{"ts":1793670736655,"k":"result","trialId":15,"command":"booster 6","tag":806,"value":6,"previousValue":4,"packet":"0101040000006502010102C986FFBD","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670740156,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045202cd49c09c"}
+{"ts":1793670740384,"k":"trial","trialId":16,"command":"booster 7","tag":806,"value":7,"previousValue":6,"packet":"0101040000006502010102C987EF9C","txObserved":false,"matchingResponse":false}
+{"ts":1793670740386,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"0101040000006502010102c987ef9c","trialId":16}
+{"ts":1793670740610,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":16}
+{"ts":1793670740901,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045302c987426e","trialId":16}
+{"ts":1793670742263,"k":"result","trialId":16,"command":"booster 7","tag":806,"value":7,"previousValue":6,"packet":"0101040000006502010102C987EF9C","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670745359,"k":"trial","trialId":17,"command":"booster 8","tag":806,"value":8,"previousValue":7,"packet":"0101040000006502010102C9881E73","txObserved":false,"matchingResponse":false}
+{"ts":1793670745363,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"0101040000006502010102c9881e73","trialId":17}
+{"ts":1793670745597,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":17}
+{"ts":1793670745876,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045402c988e2ac","trialId":17}
+{"ts":1793670746290,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045502cd488190","trialId":17}
+{"ts":1793670749967,"k":"result","trialId":17,"command":"booster 8","tag":806,"value":8,"previousValue":7,"packet":"0101040000006502010102C9881E73","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670752336,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045602cd490a6d"}
+{"ts":1793670757985,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045702cd4a4cba"}
+{"ts":1793670770067,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045802cd4b8875"}
+{"ts":1793670774997,"k":"trial","trialId":18,"command":"oscilacao 0","tag":807,"value":0,"previousValue":null,"packet":"0101040000006502010102C9C0D7BF","txObserved":false,"matchingResponse":false}
+{"ts":1793670775000,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"0101040000006502010102c9c0d7bf","trialId":18}
+{"ts":1793670775226,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":18}
+{"ts":1793670775522,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045902c9c012e6","trialId":18}
+{"ts":1793670779438,"k":"result","trialId":18,"command":"oscilacao 0","tag":807,"value":0,"previousValue":null,"packet":"0101040000006502010102C9C0D7BF","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670781923,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045a02cd48557e"}
+{"ts":1793670785112,"k":"trial","trialId":19,"command":"oscilacao 1","tag":807,"value":1,"previousValue":0,"packet":"0101040000006502010102C9C1C79E","txObserved":false,"matchingResponse":false}
+{"ts":1793670785115,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"0101040000006502010102c9c1c79e","trialId":19}
+{"ts":1793670785339,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":19}
+{"ts":1793670785633,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045b02c9c1efaf","trialId":19}
+{"ts":1793670787587,"k":"result","trialId":19,"command":"oscilacao 1","tag":807,"value":1,"previousValue":0,"packet":"0101040000006502010102C9C1C79E","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670788054,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045c02cd4962c6"}
+{"ts":1793670794912,"k":"trial","trialId":20,"command":"luz off","tag":590,"value":0,"previousValue":1,"packet":"010104000000650201010293807E0F","txObserved":false,"matchingResponse":false}
+{"ts":1793670794914,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"010104000000650201010293807e0f","trialId":20}
+{"ts":1793670801816,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":20}
+{"ts":1793670802090,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045d02938071a7","trialId":20}
+{"ts":1793670804268,"k":"result","trialId":20,"command":"luz off","tag":590,"value":0,"previousValue":1,"packet":"010104000000650201010293807E0F","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670805714,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045e02cd4abfcd"}
+{"ts":1793670808078,"k":"trial","trialId":21,"command":"luz on","tag":590,"value":1,"previousValue":0,"packet":"010104000000650201010293816E2E","txObserved":false,"matchingResponse":false}
+{"ts":1793670808081,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"010104000000650201010293816e2e","trialId":21}
+{"ts":1793670808303,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":21}
+{"ts":1793670808597,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702045f0293818cee","trialId":21}
+{"ts":1793670821944,"k":"result","trialId":21,"command":"luz on","tag":590,"value":1,"previousValue":0,"packet":"010104000000650201010293816E2E","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670824532,"k":"trial","trialId":22,"command":"timer 0","tag":538,"value":0,"previousValue":null,"packet":"010104000000650201010286808289","txObserved":false,"matchingResponse":false}
+{"ts":1793670824534,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"010104000000650201010286808289","trialId":22}
+{"ts":1793670824784,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":22}
+{"ts":1793670826699,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046002cd4d4199","trialId":22}
+{"ts":1793670829935,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046104cd4fcd093b09","trialId":22}
+{"ts":1793670832210,"k":"result","trialId":22,"command":"timer 0","tag":538,"value":0,"previousValue":null,"packet":"010104000000650201010286808289","txObserved":true,"matchingResponse":false,"physicalChange":true,"note":"ok"}
+{"ts":1793670832765,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046205cd5011cd0ab77c"}
+{"ts":1793670835466,"k":"trial","trialId":23,"command":"timer 120","tag":538,"value":120,"previousValue":null,"packet":"0101040000006502010103869078B292","txObserved":false,"matchingResponse":false}
+{"ts":1793670835468,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"0101040000006502010103869078b292","trialId":23}
+{"ts":1793670835697,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":23}
+{"ts":1793670835997,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204630a8690789380cd5012cd0c10ec","trialId":23}
+{"ts":1793670838819,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046409cd5013cd0dccc990026071","trialId":23}
+{"ts":1793670839298,"k":"result","trialId":23,"command":"timer 120","tag":538,"value":120,"previousValue":null,"packet":"0101040000006502010103869078B292","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670841641,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046505cd5014cd0e054c"}
+{"ts":1793670844866,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046607cd5015cd0fccca6201"}
+{"ts":1793670847666,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046702cccbd2cb"}
+{"ts":1793670850480,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046807cd5013cd0ecccaebc3"}
+{"ts":1793670852470,"k":"trial","trialId":24,"command":"timer 240","tag":538,"value":240,"previousValue":120,"packet":"01010400000065020101038690F0A212","txObserved":false,"matchingResponse":false}
+{"ts":1793670852471,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101038690f0a212","trialId":24}
+{"ts":1793670852697,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":24}
+{"ts":1793670852990,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a7020469038690f07e15","trialId":24}
+{"ts":1793670853814,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046a07cd5011cd0dccc90014","trialId":24}
+{"ts":1793670856628,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046b07cd5010cd0c900165c0","trialId":24}
+{"ts":1793670859728,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046c06cd4ecd0bccc8b18d","trialId":24}
+{"ts":1793670862540,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046d04cd4dcd0a6ee9","trialId":24}
+{"ts":1793670864245,"k":"result","trialId":24,"command":"timer 240","tag":538,"value":240,"previousValue":120,"packet":"01010400000065020101038690F0A212","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670865755,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046e04cd4ccd09a75a"}
+{"ts":1793670865794,"k":"trial","trialId":25,"command":"timer 480","tag":538,"value":480,"previousValue":240,"packet":"010104000000650201010486A001E0F807","txObserved":false,"matchingResponse":false}
+{"ts":1793670865796,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"010104000000650201010486a001e0f807","trialId":25}
+{"ts":1793670866022,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":25}
+{"ts":1793670866315,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702046f0486a001e07817","trialId":25}
+{"ts":1793670868738,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702047004cd4bcd08a8cc","trialId":25}
+{"ts":1793670871551,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a702047102cd4a5c6d","trialId":25}
+{"ts":1793670873740,"k":"result","trialId":25,"command":"timer 480","tag":538,"value":480,"previousValue":240,"packet":"010104000000650201010486A001E0F807","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670874367,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204720686a001dfcd4b9826"}
+{"ts":1793670879732,"k":"trial","trialId":26,"command":"timer 720","tag":538,"value":720,"previousValue":479,"packet":"010104000000650201010486A002D09B07","txObserved":false,"matchingResponse":false}
+{"ts":1793670879735,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"010104000000650201010486a002d09b07","trialId":26}
+{"ts":1793670879964,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":26}
+{"ts":1793670880259,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204730486a002d00a70","trialId":26}
+{"ts":1793670882892,"k":"result","trialId":26,"command":"timer 720","tag":538,"value":720,"previousValue":479,"packet":"010104000000650201010486A002D09B07","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670885827,"k":"trial","trialId":27,"command":"timer 0","tag":538,"value":0,"previousValue":720,"packet":"010104000000650201010286808289","txObserved":false,"matchingResponse":false}
+{"ts":1793670885829,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"010104000000650201010286808289","trialId":27}
+{"ts":1793670886051,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":27}
+{"ts":1793670886354,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a7020474048680938125f9","trialId":27}

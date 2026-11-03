@@ -1,151 +1,174 @@
 # LG PuriCare AS651DWH0 / AIR_910604_WW
 
-## Scope and evidence
+Native ThinQ2 state reporting and MQTT controls for firmware 371. No Home Assistant
+installation, permanent Mac observer, or LG cloud connection is required by this
+controller. It registers only the exact AIR_910604_WW model. Other appliance
+controllers and the shared TLV parser are unchanged.
 
-Native **receive-only** ThinQ2 support, verified offline against firmware 371 captures.
-No queries, polling, masking changes, writes or optimistic state updates are sent.
-The controller uses HADevice rather than TLVDevice because TLVDevice transmits a
-capability query during construction. Shared protocol and appliance classes are unchanged.
+## Evidence and limits
 
-Fixtures in `tests/fixtures/puricare/` preserve the two supplied JSONL files verbatim:
+Original receive-only fixtures are preserved verbatim:
 
-- `puricare-captura.jsonl`: 50 inbound packet records.
-- `puricare-teste-completo.jsonl`: 40 inbound packet records.
+- `puricare-captura.jsonl`: 50 incoming packets.
+- `puricare-teste-completo.jsonl`: 40 incoming packets.
 
-Both identify AIR_910604_WW, firmware 371, device type 402. Every wire record is
-fromDevice, packet, not injected. There are **no outbound commands**, acknowledgements
-of writes, capability responses, or annotated command/result pairs in these files.
-The supplied observer corroborates the read labels but is not independent evidence
-for writes. The pasted observer output is decoded telemetry, not a command capture.
+`puricare-power-control.jsonl` preserves eight complete records from the first
+pasted power experiment. `puricare-control-tests.jsonl` preserves all 245 complete
+JSON records from the full terminal log: 27 trials, 26 result records and 190 wire
+records, all with valid CRCs. Prompts and incomplete non-JSON text were omitted;
+missing records were not reconstructed. The failed/no-change first mode attempt
+and attempts without a matching state response are retained, not counted as
+successful state changes. Later trials establish each supported mode.
 
-The parser accepts only the observed 00 00 04 00 00 00 A7 02 04 notification
-header, checks payload length and CRC16-CCITT, and rejects incomplete TLVs atomically.
-Unobserved frame dialects are deliberately not accepted. Unknown tags are ignored.
-Repeated capability table tags 0x2D7–0x2D9 are not treated as current settings.
+`puricare-control-annotations.json` records the owner's physical observations:
+
+- The original observer/menu labels were wrong. Both writes and subsequent A7
+  reads establish 13=Booster, 14=Normal, 16=Smart.
+- Main fan value 8 is Auto. Values 2, 4, 6 and 7 remain numeric setting labels;
+  no physical percentages or RPM are inferred.
+- Booster values 2, 4, 6, 7 and 8 were confirmed; 8 is not assumed to mean Auto.
+- Power, swing, light and timer trials include physical confirmations. The final
+  timer cancellation has an A7 zero-minute response; the owner separately
+  confirmed cancellation after the pasted log ended before its last result record.
+
+Confirmed writes consist of one tag only, using the recorded 0x65 envelope and
+CRC. The repeating 0x2D7–0x2D9 rows in fan-speed responses are not extra write
+attachments or globally unique state fields. The intermediate
+`0201040000008701100000EC3C` response is not interpreted as confirmation of a
+setting. Published state changes come from valid A7 device notifications.
+
+No initial queries, polling, masking changes, optimistic state publications,
+implicit power/mode changes, automatic retries or state restoration are added.
+Physical command testing occurred on the owner's appliance, with fan/booster
+checks in Booster mode. Other firmware and mode-dependent restrictions are not
+claimed to be hardware-validated.
 
 ## MQTT contract
 
-No Home Assistant installation is required. Rethink's existing MQTT connection
-publishes retained states to the configured broker. With prefix `rethink`, the base
-is `rethink/18e271fb-81d6-45dd-818c-3034db55eb63`. The UUID is an example, not a
-hard-coded filter: other appliances reporting this exact model use their own UUID.
+With the default prefix, the base topic is
+`rethink/18e271fb-81d6-45dd-818c-3034db55eb63`. That UUID is an example, not a
+hard-coded restriction in the native controller: each registered appliance uses
+its own device ID. Commands use `<base>/<property>/set`; states are retained at
+`<base>/<property>`. Payloads and labels are case-sensitive.
 
-| Suffix                      | Read interpretation                      | Observed values        |
-| --------------------------- | ---------------------------------------- | ---------------------- |
-| `power`                     | 0 → OFF, 1 → ON                          | OFF, ON                |
-| `mode`                      | 13 → Smart, 14 → Booster, 16 → Normal    | Smart, Booster, Normal |
-| `fan_speed_raw`             | 0x1FA, no percentage conversion          | 2, 4, 6, 7, 8          |
-| `booster_speed_raw`         | 0x326, no percentage conversion          | 2, 4, 6, 7, 8          |
-| `swing_raw`                 | 0x327, raw state                         | 0, 1                   |
-| `light`                     | 0x24E: 0 → OFF, 1 → ON                   | OFF, ON                |
-| `timer_minutes`             | 0x21A, minutes per supplied observations | 0, 120, 240, 480, 720  |
-| `air_measurement_raw_0x333` | Unknown measurement and units            | Raw integer            |
-| `air_measurement_raw_0x334` | Unknown measurement and units            | Raw integer            |
-| `air_measurement_raw_0x335` | Unknown measurement and units            | Raw integer            |
-| `availability`              | Existing Rethink device lifecycle        | online, offline        |
+| Property                    | State                           | Accepted command payloads |
+| --------------------------- | ------------------------------- | ------------------------- |
+| `power`                     | ON / OFF                        | ON / OFF                  |
+| `mode`                      | Normal / Smart / Booster        | Normal / Smart / Booster  |
+| `fan_speed`                 | 2 / 4 / 6 / 7 / Auto            | 2 / 4 / 6 / 7 / Auto      |
+| `booster_speed`             | 2 / 4 / 6 / 7 / 8               | 2 / 4 / 6 / 7 / 8         |
+| `swing`                     | ON / OFF                        | ON / OFF                  |
+| `light`                     | ON / OFF                        | ON / OFF                  |
+| `timer_minutes`             | Actual remaining minutes        | 0 / 120 / 240 / 480 / 720 |
+| `fan_speed_raw`             | Raw 0x1FA, including 8 for Auto | Read-only                 |
+| `booster_speed_raw`         | Raw 0x326                       | Read-only                 |
+| `swing_raw`                 | Raw 0x327                       | Read-only                 |
+| `air_measurement_raw_0x333` | Unknown measurement/units       | Read-only                 |
+| `air_measurement_raw_0x334` | Unknown measurement/units       | Read-only                 |
+| `air_measurement_raw_0x335` | Unknown measurement/units       | Read-only                 |
+| `availability`              | online / offline                | Read-only                 |
 
-All numeric MQTT payloads are decimal strings. Unknown power/light/mode codes
-produce no new interpreted state. Nothing is defaulted before receipt. Availability
-indicates registration/connection, not receipt of all fields. Combine device availability
-with `rethink/availability` (global service LWT); retained readings can otherwise be stale.
-A passive controller may not know every property until the appliance reports it.
+All numeric wire payloads are decimal strings. Timer 0 cancels; countdown values
+such as 479 are published unchanged but are not accepted as command presets.
+Discovery separates the write-only timer preset selector from remaining minutes.
+Unknown properties/payloads and commands after device cleanup send nothing.
 
-The observer's `puricare/<UUID>/...` prefix is **not** the native Rethink prefix.
-Its `Propulsor` and `Unico` labels correspond to native `Booster` and `Normal`.
-No `/set` topic is advertised, and every attempted command is ignored.
+Device availability indicates registration, not that all properties have already
+been reported. Retained readings can be stale; the existing `rethink/availability`
+service LWT is separate. A passive startup can initially lack some states until
+the device notifies them. The observer's old `puricare/<UUID>/...` prefix and its
+mode labels differ from this native contract.
 
-## Homebridge MQTT-Thing
+## Homebridge MQTT-Thing / Apple Home
 
-The existing Homebridge configuration was not supplied, so its current accessory
-type, topics and plugin version have not been validated. MQTT-Thing can subscribe
-to the above plain MQTT topics without Home Assistant discovery. A future `getOn`
-state binding can use `<base>/power` with ON/OFF payload handling. Do not configure
-`setOn` or other write topics yet: the native controller does not control the device.
-Do not map raw speed to HomeKit percentages, raw air fields to PM/air-quality
-characteristics, or the mode strings to HomeKit enums without an explicit validated
-conversion. This release is telemetry support, not a completed controllable HomeKit
-accessory. No existing Homebridge configuration is changed automatically.
+[The additive accessory array](examples/homebridge-puricare.json) follows the
+MQTT-Thing project's documented [Air Purifier](https://github.com/arachnetech/homebridge-mqttthing/blob/master/docs/Accessories.md#air-purifier)
+and [apply-function](https://github.com/arachnetech/homebridge-mqttthing/blob/master/docs/Configuration.md#apply-functions)
+APIs. Merge these entries into the existing Homebridge `accessories` array using
+the JSON configuration editor. Replace only any old PuriCare entries with the
+same names; append if none exist. Preserve the configuration and the three
+existing air-conditioner entries. The graphical topic form does not support
+these apply functions.
 
-## Validation and rollback
+The example assumes Homebridge uses host networking on the same CasaOS server,
+so the existing loopback-only broker is reachable at `mqtt://127.0.0.1:1883`.
+Reuse the broker URL already working for the other accessories if different.
+No broker listener, DNS, certificates or credentials are changed. Being on the
+same server alone does not make another container's loopback reachable.
+
+The HomeKit representation is an explicit UI adapter, not new protocol evidence:
+
+- The primary Air Purifier has power, swing and a four-position manual slider.
+  Positions 25/50/75/100 select the validated settings 2/4/6/7; those percentages
+  are selector positions, not measured airflow. Auto selects fan value 8 and
+  does not report it as maximum speed. The last manual slider position is kept
+  while Auto is active. Selecting Manual restores the last observed manual
+  setting, or setting 2 when none is known in this Homebridge session.
+- HomeKit Auto/Manual refers to fan Auto, independently of the physical Smart
+  mode. Separate Smart and Booster switches choose their physical modes; turning
+  either off selects Normal. The active state is reflected by MQTT.
+- `CurrentAirPurifierState` is a UI projection of power (ON=PURIFYING,
+  OFF=INACTIVE), not an independently measured air-treatment status. No unknown
+  air measurement is advertised as PM, humidity, temperature or air quality.
+- Light has its own control. Five Booster preset buttons send the validated
+  numeric settings without assigning percentages or Auto semantics to them.
+- Four timer preset buttons request 2/4/8/12 hours, plus one cancellation button.
+  These are momentary request buttons, not countdown indicators. Their one-second
+  UI reset sends no command. Actual remaining minutes remain available on MQTT;
+  timing runs on the purifier, not in a permanent Mac script.
+- The example uses the Rethink service LWT for Homebridge online status. Individual
+  device availability is a separate MQTT topic and is not combined by this example.
+  Command messages are not retained, no start-up commands are configured, and no
+  MQTT-Thing confirmation/retry loop is enabled.
+
+Offline tests exercise example transformations through the actual MQTT router
+and native controller, comparing output bytes with captured appliance commands.
+The example has not been applied to or tested in the owner's Homebridge runtime.
+
+## Validation
 
 Use the existing isolated checkout; no extra Git worktree is needed.
 
 ```sh
-cd /workspace/rethink
 npm ci
 npm run check
 npm test
 npm run build
 ```
 
-Tests replay all 90 actual packets and cover state transitions, no default values,
-retained MQTT serialization, model registration, no command discovery, rejected
-commands, an hour of simulated runtime without sends, malformed frames, unknown
-values and listener cleanup. Synthetic invalid frames are robustness cases only.
-The existing full suite supplies offline regression coverage for other models,
-including RAC_056905_WW and its variants; this does not certify physical appliances.
+Tests replay the original notifications, reproduce every supported write byte for
+byte, validate corrected mode/Auto labels, ignore intermediate responses, reject
+invalid inputs, preserve raw environmental data and actual timer countdowns,
+exercise retained MQTT state/command routing, and verify cleanup and no unsolicited
+transmissions. The full suite includes the existing air-conditioner tests; it is
+software regression coverage, not certification of the owner's three physical units.
 
-Work is isolated on branch `feat/puricare-air-910604-ww`. Revert the model import
-and registration together with this controller, tests, fixtures and documentation
-to remove support. No production deployment was performed. A future deployment
-must preserve the previous image and configuration for rollback and requires
-separate authorization. Physical checks and experimental packets also require
-explicit authorization.
+The terminal menu is bundled in the image and can be opened from any working
+directory with `puricare-testes`. `puricare-testes --help` sends nothing. The menu
+requires a whitelisted command and a physical result before another trial. It
+records raw packets and observations to a private `/tmp` JSONL file and never
+runs automatically with normal container startup. Its fixed UUID belongs only
+to the owner's diagnostic session, not to the native model factory.
 
-## Next evidence needed for control
+## Image and rollback
 
-For each proposed write, obtain an authorized capture of a known command with
-its full outbound frame, direction, requested setting, response and resulting state.
-Check envelope, CRC, tag encoding, mode-dependent attached TLVs and rejection
-behavior separately. Inbound A7 state notifications do not establish outbound
-write framing or rules. Do not copy the dehumidifier/air-conditioner write logic.
-No physical capture or test is initiated by this implementation.
+Native work is isolated on `feat/puricare-native-control`. The publishing workflow
+gates image publication on TypeScript, all tests, build, the installed CLI and
+isolated mock-device checks. It builds amd64, arm64 and armv7. `puricare-controle`
+is the explicit native-control tag; legacy `puricare-leitura` and `puricare-testes`
+are refreshed to the same image for the owner's existing Compose configuration.
+An immutable `puricare-<commit>` tag is also published.
 
-## Interactive experimental terminal probe
+No production container is restarted by the workflow or this development task.
+Keep the existing `/DATA/AppData/lg-rethink:/app/data` bind mount. An update needs
+only the Rethink service to pull/recreate; the existing Mosquitto can stay running.
+The previous read-only image with bundled tests remains available for rollback:
 
-`tools/puricare-terminal-test.mjs` is a separate opt-in diagnostic tool for the
-owner-authorized physical experiments. It does not enable native MQTT commands.
-The rebuilt image includes the script and a launcher. In the Rethink container terminal:
-
-```sh
-puricare-testes
+```text
+ghcr.io/hkb54jp7bz-cell/rethink@sha256:43c2269248c79d61515c4251f64ea42f9378b1301ac2152f2c5c4ac1590152b0
 ```
 
-`puricare-testes --help` displays help without contacting the management interface.
-The launcher uses `/usr/bin/node` and `/app/tools/puricare-terminal-test.mjs`, so it
-works from any working directory. The normal container startup still runs Rethink;
-the menu does not run automatically. The Mosquitto image remains unchanged.
-
-The script itself only prints the menu without `--execute`; the installed launcher
-adds that option by default. In an active session the tool first verifies the
-fixed purifier UUID/model through the management interface. It sends no appliance
-packet until the user enters a whitelisted menu command. Each candidate uses
-read values from the captures and the shared TLV encoder; its suitability as a
-write is still a hypothesis. Commands are serialized behind physical result
-reporting (`ok` or `nao`), not automatically retried. Ambient tags have no write
-commands. No polling, certificate changes, or container restart is performed.
-
-Each run records raw outbound/inbound packets, CRC-checked state observations,
-trial IDs, and the user's physical observations in a private `/tmp` JSONL file.
-An echoed value is recorded separately from a physical change; it does not on
-its own validate a write. `sair` ends the session and prints the capture path.
-Settings are not automatically restored. Test different values from the current
-state and cancel timer experiments with `timer 0`, checking the physical panel.
-
-The published read-only image was used to test this tool with networking disabled
-and a mock management server: all 24 whitelisted candidate values, invalid input
-rejection, one pending write at a time, raw capture/result correlation, wrong
-model/offline rejection, and the default dry run. These are software checks, not
-physical appliance validation. The reproducible container harness is
-`tests/tools/puricare-terminal-test.docker.mjs`; mount the probe at
-`/app/tools/puricare-terminal-test.mjs` and the harness at `/app/puricare-menu-harness.mjs`
-inside the published image, and run the latter with `--network none`.
-
-The `Publish PuriCare image with terminal menu` workflow builds an amd64 image,
-checks the installed launcher, and runs the mock-device harness with networking
-disabled before publishing amd64/arm64/armv7 images. It publishes `puricare-testes`
-and refreshes `puricare-leitura` with the same native read-only controller, so
-CasaOS can update the existing configured image without a Compose edit. The
-previous image remains available at digest
-`sha256:6cd7469f7d65638a603d2a9e5651b4aeefaa7448700ed48e725a217d7ffd80a9`.
-No container on the owner's server is restarted by this workflow.
+Revert the model import/registration together with its controller/tests to remove
+support at source level. Unknown environmental semantics and firmware-specific
+features require separate evidence; no experimental packets are sent by setup,
+build, native startup or automated tests.

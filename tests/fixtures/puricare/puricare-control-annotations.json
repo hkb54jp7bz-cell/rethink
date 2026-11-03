@@ -1,0 +1,19 @@
+{
+  "source": "Owner physical observations in this conversation, paired with puricare-control-tests.jsonl",
+  "mode_trials": {
+    "5": "Smart",
+    "6": "Normal",
+    "7": "Booster"
+  },
+  "fan_auto_trial": 12,
+  "fan_auto_value": 8,
+  "owner_mode_statement": "modo Smart na vdd é modo Booster e modo normal na vdd é modo Smart, e Booster normal tudo trocado",
+  "owner_fan_statement": "fan 8 = o auto os resto todos corretos",
+  "scope": "Power, modes, main fan, booster fan, swing, light and timer; owner confirmed final timer cancellation separately.",
+  "timer_cancel": {
+    "command_trial": 27,
+    "earlier_physical_confirmation_trial": 22,
+    "final_reported_minutes": 0,
+    "final_physical_confirmation_record": "Owner reply in conversation: Sim, cancelado"
+  }
+}

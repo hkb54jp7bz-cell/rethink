@@ -1,0 +1,107 @@
+name: Publish native PuriCare control image
+
+on:
+    push:
+        branches:
+            - feat/puricare-native-control
+
+permissions:
+    contents: read
+    packages: write
+
+concurrency:
+    group: puricare-image
+    cancel-in-progress: true
+
+jobs:
+    publish:
+        # This image belongs to the development fork; never replace upstream dev/latest.
+        if: github.repository == 'hkb54jp7bz-cell/rethink'
+        runs-on: ubuntu-latest
+        timeout-minutes: 30
+        steps:
+            - name: Checkout source
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24
+                  cache: npm
+
+            - name: Install locked dependencies
+              run: npm ci
+
+            - name: Type check
+              run: npm run check
+
+            - name: Run offline tests
+              run: npm test
+
+            - name: Build
+              run: npm run build
+
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v3
+              with:
+                  platforms: arm64,arm
+
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v3
+
+            - name: Build image for offline smoke tests
+              uses: docker/build-push-action@v6
+              with:
+                  context: .
+                  file: ./Dockerfile
+                  platforms: linux/amd64
+                  load: true
+                  tags: rethink-puricare-smoke:${{ github.sha }}
+                  build-args: |
+                      GIT_REVISION=${{ github.sha }}
+
+            - name: Verify installed terminal command
+              run: |
+                  docker run --rm --network none --entrypoint puricare-testes \
+                    rethink-puricare-smoke:${{ github.sha }} --help
+
+            - name: Test bundled menu against offline mock devices
+              run: |
+                  docker run --rm --network none \
+                    --mount type=bind,src="${{ github.workspace }}/tests/tools/puricare-terminal-test.docker.mjs",dst=/app/puricare-menu-harness.mjs,readonly \
+                    --entrypoint node rethink-puricare-smoke:${{ github.sha }} \
+                    /app/puricare-menu-harness.mjs
+
+            - name: Verify native controls against real captured packets
+              run: |
+                  docker run --rm --network none \
+                    --mount type=bind,src="${{ github.workspace }}/tests/tools/puricare-native-image.docker.mjs",dst=/app/puricare-native-image.docker.mjs,readonly \
+                    --mount type=bind,src="${{ github.workspace }}/tests/fixtures/puricare/puricare-control-tests.jsonl",dst=/app/puricare-control-tests.jsonl,readonly \
+                    --entrypoint node rethink-puricare-smoke:${{ github.sha }} \
+                    /app/puricare-native-image.docker.mjs
+
+            - name: Log in to GHCR
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build and publish image
+              uses: docker/build-push-action@v6
+              with:
+                  context: .
+                  file: ./Dockerfile
+                  platforms: linux/amd64,linux/arm64,linux/arm/v7
+                  push: true
+                  tags: |
+                      ghcr.io/hkb54jp7bz-cell/rethink:puricare-leitura
+                      ghcr.io/hkb54jp7bz-cell/rethink:puricare-testes
+                      ghcr.io/hkb54jp7bz-cell/rethink:puricare-controle
+                      ghcr.io/hkb54jp7bz-cell/rethink:puricare-${{ github.sha }}
+                  labels: |
+                      org.opencontainers.image.source=https://github.com/hkb54jp7bz-cell/rethink
+                      org.opencontainers.image.revision=${{ github.sha }}
+                      org.opencontainers.image.description=LG PuriCare AS651DWH0 native MQTT controls verified against appliance captures
+                  build-args: |
+                      GIT_REVISION=${{ github.sha }}

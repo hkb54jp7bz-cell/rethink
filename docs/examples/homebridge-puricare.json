@@ -1,0 +1,339 @@
+[
+  {
+    "accessory": "mqttthing",
+    "type": "airPurifier",
+    "name": "PuriCare",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "swingModeValues": ["OFF", "ON"],
+    "minRotationSpeed": 25,
+    "maxRotationSpeed": 100,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setActive": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/power/set",
+      "getActive": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/power",
+      "getCurrentAirPurifierState": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/power",
+        "apply": "const v = String(message); return v === 'ON' ? 'PURIFYING' : v === 'OFF' ? 'INACTIVE' : undefined;"
+      },
+      "getTargetAirPurifierState": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/fan_speed",
+        "apply": "const v = String(message); if (v === 'Auto') return 'AUTO'; if (['2', '4', '6', '7'].includes(v)) { state.global.manualSpeed = v; return 'MANUAL'; } return undefined;"
+      },
+      "setTargetAirPurifierState": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/fan_speed/set",
+        "apply": "if (String(message) === 'AUTO') return 'Auto'; if (String(message) === 'MANUAL') return state.global.manualSpeed || '2'; return undefined;"
+      },
+      "getRotationSpeed": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/fan_speed",
+        "apply": "const v = String(message); const speeds = { '2': 25, '4': 50, '6': 75, '7': 100 }; if (!Object.prototype.hasOwnProperty.call(speeds, v)) return undefined; state.global.manualSpeed = v; return speeds[v];"
+      },
+      "setRotationSpeed": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/fan_speed/set",
+        "apply": "const n = Number(message); if (!Number.isFinite(n) || n <= 0 || n > 100) return undefined; const v = ['2', '4', '6', '7'][Math.ceil(n / 25) - 1]; state.global.manualSpeed = v; return v;"
+      },
+      "getSwingMode": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/swing",
+      "setSwingMode": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/swing/set"
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare modo Smart",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "Smart",
+    "offValue": "Normal",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "otherValueOff": true,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "getOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/mode",
+      "setOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/mode/set"
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare modo Booster",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "Booster",
+    "offValue": "Normal",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "otherValueOff": true,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "getOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/mode",
+      "setOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/mode/set"
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "lightbulb",
+    "name": "PuriCare luz",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "topics": {
+      "getOnline": "rethink/availability",
+      "getOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/light",
+      "setOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/light/set"
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare Booster 2",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
+        "apply": "return String(message) === 'ON' ? '2' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare Booster 4",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
+        "apply": "return String(message) === 'ON' ? '4' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare Booster 6",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
+        "apply": "return String(message) === 'ON' ? '6' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare Booster 7",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
+        "apply": "return String(message) === 'ON' ? '7' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare Booster 8",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
+        "apply": "return String(message) === 'ON' ? '8' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare timer 2h",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
+        "apply": "return String(message) === 'ON' ? '120' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare timer 4h",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
+        "apply": "return String(message) === 'ON' ? '240' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare timer 8h",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
+        "apply": "return String(message) === 'ON' ? '480' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare timer 12h",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
+        "apply": "return String(message) === 'ON' ? '720' : undefined;"
+      }
+    }
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare cancelar timer",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "turnOffAfterms": 1000,
+    "topics": {
+      "getOnline": "rethink/availability",
+      "setOn": {
+        "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
+        "apply": "return String(message) === 'ON' ? '0' : undefined;"
+      }
+    }
+  }
+]

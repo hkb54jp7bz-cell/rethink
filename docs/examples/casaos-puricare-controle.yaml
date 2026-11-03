@@ -1,0 +1,71 @@
+# Novo app completo para CasaOS: Mosquitto + Rethink PuriCare.
+# Mantenha o app antigo inteiro parado enquanto este estiver ativo.
+# Reutiliza /DATA/AppData/lg-rethink; nao apague a pasta de dados antiga.
+name: rethink_puricare
+services:
+    mosquitto:
+        cpu_shares: 90
+        command:
+            - mosquitto
+            - -c
+            - /mosquitto-no-auth.conf
+        container_name: lg-rethink-mqtt-puricare
+        deploy:
+            resources:
+                limits:
+                    memory: 32008M
+        hostname: lg-rethink-mqtt-puricare
+        image: eclipse-mosquitto:2
+        labels:
+            icon: https://icon.casaos.io/main/all/mosquitto.png
+        ports:
+            - host_ip: 127.0.0.1
+              target: 1883
+              published: '1883'
+              protocol: tcp
+        restart: unless-stopped
+        volumes: []
+        devices: []
+        cap_add: []
+        environment: []
+        network_mode: bridge
+        privileged: false
+    rethink:
+        cpu_shares: 90
+        container_name: lg-rethink-puricare
+        depends_on:
+            mosquitto:
+                condition: service_started
+                required: true
+        deploy:
+            resources:
+                limits:
+                    memory: 32008M
+        hostname: lg-rethink-puricare
+        image: ghcr.io/hkb54jp7bz-cell/rethink:puricare-controle
+        labels:
+            icon: https://icon.casaos.io/main/all/mosquitto.png
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /DATA/AppData/lg-rethink
+              target: /app/data
+        ports: []
+        devices: []
+        cap_add: []
+        environment: []
+        network_mode: host
+        privileged: false
+x-casaos:
+    author: self
+    category: self
+    hostname: ''
+    icon: https://icon.casaos.io/main/all/mosquitto.png
+    index: /
+    is_uncontrolled: false
+    port_map: '44401'
+    scheme: http
+    store_app_id: rethink_puricare
+    title:
+        custom: Rethink PuriCare
+        en_us: Rethink PuriCare

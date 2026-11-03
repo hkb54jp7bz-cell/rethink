@@ -68,7 +68,7 @@ const t1deviceTypes: Record<string, T1Factory> = {
 }
 
 const t2deviceTypes: Record<string, T2Factory> = {
-    AIR_910604_WW, // AS651DWH0: passive receive-only support
+    AIR_910604_WW, // AS651DWH0: state reporting and confirmed native controls
     POT_056905_WW,
     RAC_056905_WW,
     WIN_056905_WW,

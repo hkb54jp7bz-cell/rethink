@@ -1,0 +1,8 @@
+{"ts":1793670177999,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":1}
+{"ts":1793670178315,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204fc0e7dc09380cd40cd00ccc090409000c443","trialId":1}
+{"ts":1793670199661,"k":"result","trialId":1,"command":"energia OFF","tag":503,"value":0,"previousValue":null,"packet":"01010400000065020101027DC00576","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
+{"ts":1793670205886,"k":"trial","trialId":2,"command":"energia ON","tag":503,"value":1,"previousValue":0,"packet":"01010400000065020101027DC11557","txObserved":false,"matchingResponse":false}
+{"ts":1793670205889,"k":"wire","dir":"toDevice","type":"packet","injected":true,"hex":"01010400000065020101027dc11557","trialId":2}
+{"ts":1793670206111,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"0201040000008701100000ec3c","trialId":2}
+{"ts":1793670206405,"k":"wire","dir":"fromDevice","type":"packet","injected":false,"hex":"000004000000a70204fd047dc1938112f4","trialId":2}
+{"ts":1793670212400,"k":"result","trialId":2,"command":"energia ON","tag":503,"value":1,"previousValue":0,"packet":"01010400000065020101027DC11557","txObserved":true,"matchingResponse":true,"physicalChange":true,"note":"ok"}
