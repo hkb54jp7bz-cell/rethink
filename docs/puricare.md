@@ -111,7 +111,8 @@ The HomeKit representation is an explicit UI adapter, not new protocol evidence:
 - `CurrentAirPurifierState` is a UI projection of power (ON=PURIFYING,
   OFF=INACTIVE), not an independently measured air-treatment status. No unknown
   air measurement is advertised as PM, humidity, temperature or air quality.
-- Light has its own control. Five Booster preset buttons send the validated
+- Light has its own control, and a separate Swing switch gives direct access
+  from the Home app as well as the primary accessory. Five Booster preset buttons send the validated
   numeric settings without assigning percentages or Auto semantics to them.
 - Four timer preset buttons request 2/4/8/12 hours, plus one cancellation button.
   These are momentary request buttons, not countdown indicators. Their one-second

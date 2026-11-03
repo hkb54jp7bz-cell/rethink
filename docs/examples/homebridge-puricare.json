@@ -379,5 +379,28 @@
     "confirmationIndicateOffline": false,
     "logMqtt": false,
     "optimizePublishing": false
+  },
+  {
+    "accessory": "mqttthing",
+    "type": "switch",
+    "name": "PuriCare oscilação",
+    "url": "mqtt://127.0.0.1:1883",
+    "manufacturer": "LG",
+    "model": "AS651DWH0",
+    "onValue": "ON",
+    "offValue": "OFF",
+    "onlineValue": "online",
+    "offlineValue": "offline",
+    "mqttPubOptions": {
+      "retain": false
+    },
+    "topics": {
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
+      "getOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/swing",
+      "setOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/swing/set"
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   }
 ]

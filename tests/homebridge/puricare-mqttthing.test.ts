@@ -43,7 +43,7 @@ function rig(t: import('node:test').TestContext) {
 }
 
 test('Homebridge example is additive, contains no retained/startup commands or invented air-quality data', () => {
-    assert.equal(examples.length, 14)
+    assert.equal(examples.length, 15)
     for (const accessory of examples) {
         assert.equal(accessory.accessory, 'mqttthing')
         assert.equal(accessory.url, 'mqtt://127.0.0.1:1883')
@@ -113,13 +113,15 @@ test('HomeKit power, physical mode switches, swing and light generate only captu
     send(light.topics.setOn, light.onValue, 21)
     assert.equal(apply(main.topics.getCurrentAirPurifierState, 'OFF'), 'INACTIVE')
     assert.equal(apply(main.topics.getCurrentAirPurifierState, 'ON'), 'PURIFYING')
-    assert.equal(thinq.outbox.length, 9)
+    send(examples[14].topics.setOn, 'OFF', 18)
+    send(examples[14].topics.setOn, 'ON', 19)
+    assert.equal(thinq.outbox.length, 11)
 })
 
 test('booster and timer preset buttons send one captured request and their UI reset sends nothing', (t) => {
     const { send, thinq } = rig(t)
     const trials = [13, 14, 15, 16, 17, 23, 24, 25, 26, 27]
-    for (const [index, accessory] of examples.slice(4).entries()) {
+    for (const [index, accessory] of examples.filter((a: any) => a.turnOffAfterms === 1000).entries()) {
         assert.equal(accessory.turnOffAfterms, 1000)
         assert.equal(accessory.topics.getOn, undefined)
         send(accessory.topics.setOn, 'ON', trials[index])
