@@ -4,7 +4,7 @@ import { spawn } from 'node:child_process'
 import { WebSocketServer } from 'ws'
 import * as TLV from './dist/util/tlv.js'
 import crc16 from './dist/util/crc16.js'
-const script = '/app/puricare-terminal-test.mjs'
+const script = '/app/tools/puricare-terminal-test.mjs'
 const id = '18e271fb-81d6-45dd-818c-3034db55eb63'
 const tests = [
     ['energia OFF', 0x1f7, 0],

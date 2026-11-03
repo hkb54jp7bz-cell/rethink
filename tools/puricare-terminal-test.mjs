@@ -34,7 +34,9 @@ Campos ambientais sao apenas lidos. Nao ha reenvio, polling ou restauracao autom
 
 console.log(help)
 if (process.argv.length !== 3 || process.argv[2] !== '--execute') {
-    console.log('\nPara iniciar no terminal do container Rethink: node /tmp/puricare-testes.mjs --execute')
+    console.log(
+        '\nNa imagem com o menu instalado: puricare-testes. No script avulso: node /tmp/puricare-testes.mjs --execute',
+    )
     process.exit(0)
 }
 

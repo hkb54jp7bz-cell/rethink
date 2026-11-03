@@ -24,6 +24,8 @@ RUN apk upgrade --no-cache \
 COPY --from=build /app/package.json /app/package-lock.json ./
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/tools/puricare-terminal-test.mjs ./tools/puricare-terminal-test.mjs
+COPY --chmod=755 scripts/puricare-testes.sh /usr/local/bin/puricare-testes
 COPY config.jsonc /app/config.json
 
 RUN mkdir -p /app/data

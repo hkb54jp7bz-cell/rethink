@@ -105,13 +105,19 @@ No physical capture or test is initiated by this implementation.
 
 `tools/puricare-terminal-test.mjs` is a separate opt-in diagnostic tool for the
 owner-authorized physical experiments. It does not enable native MQTT commands.
-Run it in the Rethink container using its installed `/app` dependencies:
+The rebuilt image includes the script and a launcher. In the Rethink container terminal:
 
 ```sh
-node /tmp/puricare-testes.mjs --execute
+puricare-testes
 ```
 
-Without `--execute` it only prints the menu. With it, the tool first verifies the
+`puricare-testes --help` displays help without contacting the management interface.
+The launcher uses `/usr/bin/node` and `/app/tools/puricare-terminal-test.mjs`, so it
+works from any working directory. The normal container startup still runs Rethink;
+the menu does not run automatically. The Mosquitto image remains unchanged.
+
+The script itself only prints the menu without `--execute`; the installed launcher
+adds that option by default. In an active session the tool first verifies the
 fixed purifier UUID/model through the management interface. It sends no appliance
 packet until the user enters a whitelisted menu command. Each candidate uses
 read values from the captures and the shared TLV encoder; its suitability as a
@@ -132,5 +138,14 @@ rejection, one pending write at a time, raw capture/result correlation, wrong
 model/offline rejection, and the default dry run. These are software checks, not
 physical appliance validation. The reproducible container harness is
 `tests/tools/puricare-terminal-test.docker.mjs`; mount the probe at
-`/app/puricare-terminal-test.mjs` and the harness at `/app/puricare-menu-harness.mjs`
+`/app/tools/puricare-terminal-test.mjs` and the harness at `/app/puricare-menu-harness.mjs`
 inside the published image, and run the latter with `--network none`.
+
+The `Publish PuriCare image with terminal menu` workflow builds an amd64 image,
+checks the installed launcher, and runs the mock-device harness with networking
+disabled before publishing amd64/arm64/armv7 images. It publishes `puricare-testes`
+and refreshes `puricare-leitura` with the same native read-only controller, so
+CasaOS can update the existing configured image without a Compose edit. The
+previous image remains available at digest
+`sha256:6cd7469f7d65638a603d2a9e5651b4aeefaa7448700ed48e725a217d7ffd80a9`.
+No container on the owner's server is restarted by this workflow.
