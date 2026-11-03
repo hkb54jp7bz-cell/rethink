@@ -1,7 +1,7 @@
 {
   "accessory": "mqttthing",
   "type": "airPurifier",
-  "name": "PuriCare",
+  "name": "Purificador",
   "url": "mqtt://127.0.0.1:1883",
   "manufacturer": "LG",
   "model": "AS651DWH0",
@@ -44,5 +44,7 @@
   },
   "confirmationIndicateOffline": false,
   "logMqtt": false,
-  "optimizePublishing": false
+  "optimizePublishing": false,
+  "integerValue": false,
+  "otherValueOff": false
 }
