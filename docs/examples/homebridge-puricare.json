@@ -17,7 +17,7 @@
     "minRotationSpeed": 25,
     "maxRotationSpeed": 100,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setActive": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/power/set",
       "getActive": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/power",
       "getCurrentAirPurifierState": {
@@ -42,7 +42,10 @@
       },
       "getSwingMode": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/swing",
       "setSwingMode": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/swing/set"
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -60,10 +63,13 @@
     },
     "otherValueOff": true,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "getOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/mode",
       "setOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/mode/set"
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -81,10 +87,13 @@
     },
     "otherValueOff": true,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "getOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/mode",
       "setOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/mode/set"
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -101,10 +110,13 @@
       "retain": false
     },
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "getOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/light",
       "setOn": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/light/set"
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -122,12 +134,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
         "apply": "return String(message) === 'ON' ? '2' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -145,12 +160,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
         "apply": "return String(message) === 'ON' ? '4' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -168,12 +186,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
         "apply": "return String(message) === 'ON' ? '6' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -191,12 +212,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
         "apply": "return String(message) === 'ON' ? '7' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -214,12 +238,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/booster_speed/set",
         "apply": "return String(message) === 'ON' ? '8' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -237,12 +264,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
         "apply": "return String(message) === 'ON' ? '120' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -260,12 +290,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
         "apply": "return String(message) === 'ON' ? '240' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -283,12 +316,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
         "apply": "return String(message) === 'ON' ? '480' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -306,12 +342,15 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
         "apply": "return String(message) === 'ON' ? '720' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   },
   {
     "accessory": "mqttthing",
@@ -329,11 +368,14 @@
     },
     "turnOffAfterms": 1000,
     "topics": {
-      "getOnline": "rethink/availability",
+      "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
       "setOn": {
         "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/timer_minutes/set",
         "apply": "return String(message) === 'ON' ? '0' : undefined;"
       }
-    }
+    },
+    "confirmationIndicateOffline": false,
+    "logMqtt": false,
+    "optimizePublishing": false
   }
 ]

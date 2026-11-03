@@ -48,6 +48,9 @@ test('Homebridge example is additive, contains no retained/startup commands or i
         assert.equal(accessory.accessory, 'mqttthing')
         assert.equal(accessory.url, 'mqtt://127.0.0.1:1883')
         assert.equal(accessory.mqttPubOptions.retain, false)
+        assert.equal(accessory.confirmationIndicateOffline, false)
+        assert.equal(accessory.logMqtt, false)
+        assert.equal(accessory.optimizePublishing, false)
         assert.equal(accessory.startPub, undefined)
         assert.equal(accessory.username, undefined)
         assert.equal(accessory.password, undefined)
@@ -55,7 +58,13 @@ test('Homebridge example is additive, contains no retained/startup commands or i
             assert.doesNotMatch(key, /AirQuality|PM10|PM2|Humidity|Temperature|FilterLife/)
     }
     assert.equal(examples[0].type, 'airPurifier')
-    assert.equal(examples[0].topics.getOnline, 'rethink/availability')
+    assert.equal(examples[0].topics.getOnline, `${base}/availability`)
+    assert.deepEqual(
+        examples[0],
+        JSON.parse(
+            readFileSync(new URL('../../docs/examples/homebridge-puricare-principal.json', import.meta.url), 'utf8'),
+        ),
+    )
 })
 
 test('manual slider is four UI positions; Auto is a separate target and never maximum speed', (t) => {

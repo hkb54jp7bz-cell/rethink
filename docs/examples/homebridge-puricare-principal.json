@@ -1,0 +1,48 @@
+{
+  "accessory": "mqttthing",
+  "type": "airPurifier",
+  "name": "PuriCare",
+  "url": "mqtt://127.0.0.1:1883",
+  "manufacturer": "LG",
+  "model": "AS651DWH0",
+  "onValue": "ON",
+  "offValue": "OFF",
+  "onlineValue": "online",
+  "offlineValue": "offline",
+  "mqttPubOptions": {
+    "retain": false
+  },
+  "swingModeValues": ["OFF", "ON"],
+  "minRotationSpeed": 25,
+  "maxRotationSpeed": 100,
+  "topics": {
+    "getOnline": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/availability",
+    "setActive": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/power/set",
+    "getActive": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/power",
+    "getCurrentAirPurifierState": {
+      "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/power",
+      "apply": "const v = String(message); return v === 'ON' ? 'PURIFYING' : v === 'OFF' ? 'INACTIVE' : undefined;"
+    },
+    "getTargetAirPurifierState": {
+      "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/fan_speed",
+      "apply": "const v = String(message); if (v === 'Auto') return 'AUTO'; if (['2', '4', '6', '7'].includes(v)) { state.global.manualSpeed = v; return 'MANUAL'; } return undefined;"
+    },
+    "setTargetAirPurifierState": {
+      "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/fan_speed/set",
+      "apply": "if (String(message) === 'AUTO') return 'Auto'; if (String(message) === 'MANUAL') return state.global.manualSpeed || '2'; return undefined;"
+    },
+    "getRotationSpeed": {
+      "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/fan_speed",
+      "apply": "const v = String(message); const speeds = { '2': 25, '4': 50, '6': 75, '7': 100 }; if (!Object.prototype.hasOwnProperty.call(speeds, v)) return undefined; state.global.manualSpeed = v; return speeds[v];"
+    },
+    "setRotationSpeed": {
+      "topic": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/fan_speed/set",
+      "apply": "const n = Number(message); if (!Number.isFinite(n) || n <= 0 || n > 100) return undefined; const v = ['2', '4', '6', '7'][Math.ceil(n / 25) - 1]; state.global.manualSpeed = v; return v;"
+    },
+    "getSwingMode": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/swing",
+    "setSwingMode": "rethink/18e271fb-81d6-45dd-818c-3034db55eb63/swing/set"
+  },
+  "confirmationIndicateOffline": false,
+  "logMqtt": false,
+  "optimizePublishing": false
+}

@@ -90,8 +90,9 @@ same names; append if none exist. Preserve the configuration and the three
 existing air-conditioner entries. The graphical topic form does not support
 these apply functions.
 
-The example assumes Homebridge uses host networking on the same CasaOS server,
-so the existing loopback-only broker is reachable at `mqtt://127.0.0.1:1883`.
+The owner's working MQTT-Thing air-conditioner configuration confirms the broker
+URL `mqtt://127.0.0.1:1883`; the example reuses it and the same false-valued
+`confirmationIndicateOffline`, `logMqtt`, and `optimizePublishing` settings.
 Reuse the broker URL already working for the other accessories if different.
 No broker listener, DNS, certificates or credentials are changed. Being on the
 same server alone does not make another container's loopback reachable.
@@ -116,10 +117,16 @@ The HomeKit representation is an explicit UI adapter, not new protocol evidence:
   These are momentary request buttons, not countdown indicators. Their one-second
   UI reset sends no command. Actual remaining minutes remain available on MQTT;
   timing runs on the purifier, not in a permanent Mac script.
-- The example uses the Rethink service LWT for Homebridge online status. Individual
-  device availability is a separate MQTT topic and is not combined by this example.
+- The example uses the purifier's device availability, matching the owner's
+  existing working air-conditioner configuration. The Rethink service LWT remains
+  separate and is not combined by this example.
   Command messages are not retained, no start-up commands are configured, and no
   MQTT-Thing confirmation/retry loop is enabled.
+
+For the MQTT-Thing per-accessory JSON editor,
+[the primary accessory alone](examples/homebridge-puricare-principal.json) is a
+single object. The full file is an array containing the primary accessory and
+auxiliary controls.
 
 Offline tests exercise example transformations through the actual MQTT router
 and native controller, comparing output bytes with captured appliance commands.
